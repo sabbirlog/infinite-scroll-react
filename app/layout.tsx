@@ -1,9 +1,7 @@
 import ReactQueryProvider from '@/providers/ReactQuery'
+import ThemeContextProvider from '@/theme/index'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+// import ThemeContextProvider from "@theme";
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,11 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ReactQueryProvider>
-          {children}
-        </ReactQueryProvider>
-      </body>
+      <ThemeContextProvider>
+        <body>
+          <ReactQueryProvider>
+            {children}
+          </ReactQueryProvider>
+        </body>
+      </ThemeContextProvider>
     </html>
   )
 }
