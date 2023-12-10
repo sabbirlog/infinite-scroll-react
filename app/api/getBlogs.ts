@@ -1,7 +1,12 @@
 import axiosInstance from "./api";
 
-export const getAllPost = () => {
-  return axiosInstance.post("/returnBlogs");
+export const getAllPost = ({ pageParam }: {
+  pageParam: number
+}) => {
+  return axiosInstance.post("/returnBlogs", {
+    offset: pageParam,
+    limit: 2
+  });
 };
 
 export const getFilterPost = (data?: any) => {
